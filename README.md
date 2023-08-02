@@ -35,7 +35,7 @@ There are two main collections used in the demo under aerospace database:
 launchData
 notes
 
-This data can be found in the file ~/data/atlas/aerospace.archive.gz and restored to a database using the command below:
+This data can be found in the file ~/data/Atlas/aerospace.archive.gz and restored to a database using the command below:
 
 mongorestore --uri $CONNECTION_STR --username $DBUSER --password $DBUSER_PASS --gzip --archive=./data/atlas/aerospace.archive.gz
 
@@ -71,6 +71,7 @@ DBeaver to execute SQL queries against the Data Federation Endpoint (Atlas SQL).
 <img width="785" alt="image" src="https://github.com/nitin-mongo/In-App-Analytics/assets/72134161/c96e2065-feb8-4c41-99d4-ea41d573038c">
 
 Here we can talk about **MongoDB flexibility** to handle data from different types of rocket launches, In relational world we would have to create different tables for all types of rocket and would then need to do join to see combined view But in MongoDB we can have everything in single collection and makes easy for querying.
+These queries can be used to show case data of different types of devices and other query capabilities : ~/query/simpleQuery.js
 
 We can also talk about **Time-series collection** here as launchData is suited for timeseries collection and showcase compression provided and benefits of time-series collection.
 
