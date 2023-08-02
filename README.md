@@ -12,7 +12,7 @@ weather Data - stored in a S3 bucket and analyzed in combination with the launch
 
 **Atlas Cluster and Data Demonstration of Atlas**, the Atlas cluster deployed for the demonstration, and overview of the document model for two main Atlas collections used to store the launch data: launchData and notes.
 
-**Real-time analytics **Demonstration of how MongoDB can be used to perform real-time analytics on the data during launch.
+**Real-time analytics** Demonstration of how MongoDB can be used to perform real-time analytics on the data during launch.
 
 Compass is used to review a number of aggregation queries on the launch data and notes collections.
 A charts dashboard is displayed to show how Charts visualizations can be created to analyze the same data
@@ -31,9 +31,12 @@ The Atlas configuration components consist of:
 M30 replica set plus a M50 analytics node
 
 There are two main collections used in the demo under aerospace database:
+
 launchData
 notes
+
 This data can be found in the file ~/data/atlas/aerospace.archive.gz and restored to a database using the command below:
+
 mongorestore --uri $CONNECTION_STR --username $DBUSER --password $DBUSER_PASS --gzip --archive=./data/atlas/aerospace.archive.gz
 
 Data Lake pipeline to archive the aerospace database, launchData collection
@@ -54,5 +57,32 @@ Tableau connected to the Data Federation Endpoint using Tableau connector
 DBeaver to execute SQL queries against the Data Federation Endpoint (Atlas SQL).
 
 **Start of DEMO**
+
+**Step 1 Showcase Atlas cluster Architecture with Analytics node & Showcase collections data in MongoDB compass**
+
+<img width="552" alt="image" src="https://github.com/nitin-mongo/In-App-Analytics/assets/72134161/d982671c-6b6a-465f-a330-ac00c601a643">
+
+<img width="652" alt="image" src="https://github.com/nitin-mongo/In-App-Analytics/assets/72134161/bb4d866d-2b42-449e-9f6a-ce293592b4af">
+
+<img width="649" alt="image" src="https://github.com/nitin-mongo/In-App-Analytics/assets/72134161/09009dee-2aa6-46dc-a48b-cf44bf9ba6a8">
+
+<img width="800" alt="image" src="https://github.com/nitin-mongo/In-App-Analytics/assets/72134161/c0de03c8-ff1f-4c17-a60f-b652211f5105">
+
+<img width="785" alt="image" src="https://github.com/nitin-mongo/In-App-Analytics/assets/72134161/c96e2065-feb8-4c41-99d4-ea41d573038c">
+
+Here we can talk about **MongoDB flexibility** to handle data from different types of rocket launches, In relational world we would have to create different tables for all types of rocket and would then need to do join to see combined view But in MongoDB we can have everything in single collection and makes easy for querying.
+
+We can also talk about **Time-series collection** here as launchData is suited for timeseries collection and showcase compression provided and benefits of time-series collection.
+
+**Step 2 - Real Time Analytics**
+
+Components Used:
+* Compass
+* Aggregation pipeline
+* Charts
+* Atlas Triggers ( Change Streams )
+
+
+
 
 
