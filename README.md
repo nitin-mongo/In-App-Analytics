@@ -4,7 +4,7 @@ The demonstration shows how MongoDB Atlas can be used to manage and perform anal
 **Sources of Data :**
 launchData - Rocket launch data ( Can be stored in Time-Series collection)
 notes collection - Notes created by rocket engineers manually when they want to mark a time period or situation that they want to remember to revisit after the launch has been completed, or automated notes via Atlas triggers when metric goes out of range(bound).
-weather collection - stored in a S3 bucket and analyzed in combination with the launch data post launch.
+weather Data - stored in a S3 bucket and analyzed in combination with the launch data post launch.
 
 <img width="1062" alt="image" src="https://github.com/nitin-mongo/In-App-Analytics/assets/72134161/8a4beb9b-731b-4d86-86d0-b2f12a4fd531">
 
@@ -29,14 +29,30 @@ Atlas Configuration**
 The Atlas configuration components consist of:
 
 M30 replica set plus a M50 analytics node
+
+There are two main collections used in the demo under aerospace database:
+launchData
+notes
+This data can be found in the file ~/data/atlas/aerospace.archive.gz and restored to a database using the command below:
+mongorestore --uri $CONNECTION_STR --username $DBUSER --password $DBUSER_PASS --gzip --archive=./data/atlas/aerospace.archive.gz
+
 Data Lake pipeline to archive the aerospace database, launchData collection
+
 Data Federation configuration combining three data sources:
 Atlas cluster
 Data Lake
 S3 bucket with weather data
+
 Charts Dashboard to review launch data
+
 Triggers to generate notes for out of bound parameters (the code for this is fake, e.g., doesn't really work)
+
 Atlas Search indexes to facilitate the note search and corresponding facets.
+
 Tableau connected to the Data Federation Endpoint using Tableau connector
+
 DBeaver to execute SQL queries against the Data Federation Endpoint (Atlas SQL).
+
+**Start of DEMO**
+
 
