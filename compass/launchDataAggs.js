@@ -57,6 +57,40 @@
  }
 }]
 
+
+ // Combining launchData and notes collection
+
+ [
+  {
+    $match: {
+      time: {
+        $gt: ISODate(
+          "2020-10-13T13:46:35.000+00:00"
+        ),
+      },
+    },
+  },
+  {
+    $group: {
+      _id: "$meta.device",
+      readingsCount: {
+        $count: {},
+      },
+    },
+  },
+  {
+    $lookup: {
+      from: "notes",
+      localField: "_id",
+      foreignField: "device",
+      as: "notes",
+    },
+  },
+]
+
+
+ Ignore Below - Just for testing
+
 // ================================================================
 // Notes Collection - Atlas Cluster
 // ================================================================
@@ -248,57 +282,5 @@
     ]
    }
   }
- }
-}]
-
-
-// ================================================================
-// Blue Origin Collections
-// ================================================================
-//
-// IGNORE - not required for the demo
-// Clean up
-
-[{
- $replaceRoot: {
-  newRoot: {
-   $arrayToObject: {
-    $map: {
-     input: {
-      $objectToArray: '$$ROOT'
-     },
-     as: 'kvPair',
-     'in': {
-      k: {
-       $trim: {
-        input: '$$kvPair.k'
-       }
-      },
-      v: '$$kvPair.v'
-     }
-    }
-   }
-  }
- }
-}, {
- $addFields: {
-  meta: {
-   device: 'lidar'
-  },
-  time: {
-   $toDate: {
-    $divide: [
-     '$TIME_NANOSECONDS_TAI',
-     1000000
-    ]
-   }
-  }
- }
-}, {
- $merge: {
-  into: 'lidar',
-  on: '_id',
-  whenMatched: 'replace',
-  whenNotMatched: 'fail'
  }
 }]
