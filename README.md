@@ -83,6 +83,15 @@ Components Used:
 * Charts
 * Atlas Triggers ( Change Streams )
 
+Showcase Real-time analytics capabilities using MongoDB Aggregation Pipeline via below pipelines in compass
+
+~/compass/launchDataAggs.js
+
+- ReadingsCountByDevice
+- rollingWindowCalc
+- Combining launchData and notes collection
+
+  
 
 
 
